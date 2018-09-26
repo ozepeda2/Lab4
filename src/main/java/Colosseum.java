@@ -13,12 +13,12 @@ public class Colosseum {
     /**
      * The maximum number of hit points we will allow a Pokemon to start with.
      */
-    static final int MAX_HIT_POINTS = 50;
+    static final int MAX_HIT_POINTS = 50; // health
 
     /**
      * The maximum number of rounds we will let the Pokemon battle.
      */
-    static final int MAX_NUM_ROUNDS = 10;
+    static final int MAX_NUM_ROUNDS = 10; // turns
 
     /**
      * The first Pokemon we will be fighting.
@@ -42,22 +42,22 @@ public class Colosseum {
      * Obtain user input to set Pokemon's member variables
      * <p>
      * Requirements we should check the user for: <br>
-     * - Hit points are between 1 and MAX_HIT_POINTS <br>
-     * - No more than 50 points are split between attack level and defense leve <br>
+     * - Hit points are between 1 and MAX_HIT_POINTS <br>                                still alive?
+     * - No more than 50 points are split between attack level and defense level <br>    power
      * - Attack level and defense level must have at least 1 point each <br>
      * Example of how this will look to the user:
      * <p>
-     * Please name your Pokemon: Dolphin <br>
+     * Please name your Pokemon: obesePikachu <br>
      * How many hit points will it have? (1-50): 50 <br>
      * Split fifty points between attack level and defense level <br>
-     * Enter your attack level (1-49): 47 <br>
-     * Enter your defense level (1-3): 3 <br>
+     * Enter your attack level (1-49): 35 <br>
+     * Enter your defense level (1-3): 15 <br>
      * <br>
      * Example of checking for bad input: <br>
      * <br>
      * Please name your Pokemon: Fire <br>
-     * How many hit points will it have? (1-50): 0 <br>
-     * Sorry. Hit points must be between 1 and 50: 55 <br>
+     * How many hit points will it have? (1-50): 0 <br>                 he sleep
+     * Sorry. Hit points must be between 1 and 50: 55 <br>              outOfBounds
      * Sorry. Hit points must be between 1 and 50: 50 <br>
      * Split fifty points between attack level and defense level <br>
      * Enter your attack level (1-49): -10 <br>
@@ -72,6 +72,32 @@ public class Colosseum {
      *         Implement this function.
      */
     public static Pokemon buildPokemon() {
+
+        Scanner pokemonName = new Scanner(System.in);
+        String pokeName = pokemonName.nextLine();
+
+        Scanner hitPoints = new Scanner(System.in);
+        int hp = hitPoints.nextInt();
+        boolean hpTester = true;
+
+        if(hp < 0 || hp > 50) {
+            hpTester = false;
+            while (hpTester = false) {
+                System.out.println("Sorry. Hit points must be between 1 and 50: " + hp);
+                hitPoints = new Scanner(System.in);
+                hp = hitPoints.nextInt();
+                if (hp > 0 && hp < 50) {
+                    hpTester = true;
+                }
+            }
+        } // test to see if hp is within bounds, if not, keep asking
+
+
+        Scanner attackLevel = new Scanner(System.in);
+        int attlvl = attackLevel.nextInt();
+
+        Scanner
+
         Pokemon tempPokemon = new Pokemon();
         return tempPokemon;
     }
