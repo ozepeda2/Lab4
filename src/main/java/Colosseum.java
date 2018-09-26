@@ -73,30 +73,63 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
 
+        System.out.print("Please name your Pokemon: ");
         Scanner pokemonName = new Scanner(System.in);
         String pokeName = pokemonName.nextLine();
 
+        System.out.print("How many hit points will it have? (1-50): ");
         Scanner hitPoints = new Scanner(System.in);
         int hp = hitPoints.nextInt();
         boolean hpTester = true;
 
-        if(hp < 0 || hp > 50) {
+        if (hp < 1 || hp > MAX_HIT_POINTS) {
             hpTester = false;
             while (hpTester = false) {
-                System.out.println("Sorry. Hit points must be between 1 and 50: " + hp);
+                System.out.print("Sorry. Hit points must be between 1 and 50: ");
                 hitPoints = new Scanner(System.in);
                 hp = hitPoints.nextInt();
-                if (hp > 0 && hp < 50) {
+                if (hp > 1 && hp < MAX_HIT_POINTS) {
                     hpTester = true;
                 }
             }
         } // test to see if hp is within bounds, if not, keep asking
 
+        System.out.println("Split fifty points between attack level and defense level");
+        System.out.print("Enter your attack level (1-49): ");
 
         Scanner attackLevel = new Scanner(System.in);
-        int attlvl = attackLevel.nextInt();
+        int attLvl = attackLevel.nextInt();
+        boolean attLvlTester = true;
 
-        Scanner
+        if (attLvl < 1 || attLvl > (MAX_HIT_POINTS - 1)) {
+            attLvlTester = false;
+            while (attLvlTester = false) {
+                System.out.print("Sorry. The attack level must be between 1 and 49: ");
+                attackLevel = new Scanner(System.in);
+                attLvl = attackLevel.nextInt();
+                if (attLvl > 1 && attLvl < (MAX_HIT_POINTS - 1)) {
+                    attLvlTester = true;
+                }
+            }
+        } // test to see if attLvl is within bounds, if not, keep asking
+
+
+        Scanner defenseLevel = new Scanner(System.in);
+        int dfnLvl = defenseLevel.nextInt();
+        boolean dfnLvlTester = true;
+        int dfnLvlCap = (MAX_HIT_POINTS - attLvl);
+
+        if (dfnLvl < 1 || dfnLvl > dfnLvlCap) {
+            dfnLvlTester = false; // move below while loop?
+            while (dfnLvlTester = false) {
+                System.out.println("Sorry. The defense level must be between 1 and " + dfnLvlCap + ": ");
+                defenseLevel = new Scanner(System.in);
+                dfnLvl = defenseLevel.nextInt();
+                if (dfnLvl > 1 && dfnLvl < dfnLvlCap) {
+                    dfnLvlTester = true;
+                }
+            }
+        }
 
         Pokemon tempPokemon = new Pokemon();
         return tempPokemon;
